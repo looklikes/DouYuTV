@@ -18,6 +18,8 @@
 		18006BD81F5A50BF00BA2CE5 /* Focus.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 18006BD61F5A50BF00BA2CE5 /* Focus.storyboard */; };
 		18006BDB1F5A50D400BA2CE5 /* Find.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 18006BD91F5A50D400BA2CE5 /* Find.storyboard */; };
 		18006BDE1F5A50EC00BA2CE5 /* Mine.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 18006BDC1F5A50EC00BA2CE5 /* Mine.storyboard */; };
+		181816EC1F5A5FAF00366603 /* HomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 181816EB1F5A5FAF00366603 /* HomeViewController.swift */; };
+		181816F11F5A65E000366603 /* UIBarButtonItemExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 181816F01F5A65E000366603 /* UIBarButtonItemExtension.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -55,7 +57,8 @@
 		18006BD71F5A50BF00BA2CE5 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Focus.storyboard; sourceTree = "<group>"; };
 		18006BDA1F5A50D400BA2CE5 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Find.storyboard; sourceTree = "<group>"; };
 		18006BDD1F5A50EC00BA2CE5 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Mine.storyboard; sourceTree = "<group>"; };
-		18006BEF1F5A57EF00BA2CE5 /* Base */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = Base; path = Base.lproj/HomeViewController.swift; sourceTree = "<group>"; };
+		181816EB1F5A5FAF00366603 /* HomeViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HomeViewController.swift; sourceTree = "<group>"; };
+		181816F01F5A65E000366603 /* UIBarButtonItemExtension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UIBarButtonItemExtension.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -112,6 +115,7 @@
 				18006BCC1F5A4E1000BA2CE5 /* Find */,
 				18006BCB1F5A4E0E00BA2CE5 /* Mine */,
 				18006BCA1F5A4E0C00BA2CE5 /* Main */,
+				181816ED1F5A653200366603 /* Tools */,
 				18006B9C1F5A4DFB00BA2CE5 /* AppDelegate.swift */,
 				18006BA01F5A4DFB00BA2CE5 /* Main.storyboard */,
 				18006BA31F5A4DFB00BA2CE5 /* Assets.xcassets */,
@@ -207,7 +211,7 @@
 			isa = PBXGroup;
 			children = (
 				18006BD01F5A508800BA2CE5 /* Home.storyboard */,
-				18006BEE1F5A57EF00BA2CE5 /* HomeViewController.swift */,
+				181816EB1F5A5FAF00366603 /* HomeViewController.swift */,
 			);
 			name = Views;
 			sourceTree = "<group>";
@@ -305,6 +309,14 @@
 			children = (
 			);
 			name = Models;
+			sourceTree = "<group>";
+		};
+		181816ED1F5A653200366603 /* Tools */ = {
+			isa = PBXGroup;
+			children = (
+				181816F01F5A65E000366603 /* UIBarButtonItemExtension.swift */,
+			);
+			name = Tools;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -450,6 +462,8 @@
 			buildActionMask = 2147483647;
 			files = (
 				18006B9D1F5A4DFB00BA2CE5 /* AppDelegate.swift in Sources */,
+				181816EC1F5A5FAF00366603 /* HomeViewController.swift in Sources */,
+				181816F11F5A65E000366603 /* UIBarButtonItemExtension.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -539,14 +553,6 @@
 				18006BDD1F5A50EC00BA2CE5 /* Base */,
 			);
 			name = Mine.storyboard;
-			sourceTree = "<group>";
-		};
-		18006BEE1F5A57EF00BA2CE5 /* HomeViewController.swift */ = {
-			isa = PBXVariantGroup;
-			children = (
-				18006BEF1F5A57EF00BA2CE5 /* Base */,
-			);
-			name = HomeViewController.swift;
 			sourceTree = "<group>";
 		};
 /* End PBXVariantGroup section */
@@ -752,6 +758,7 @@
 				18006BC31F5A4DFC00BA2CE5 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		18006BC41F5A4DFC00BA2CE5 /* Build configuration list for PBXNativeTarget "DouYuTVTests" */ = {
 			isa = XCConfigurationList;
@@ -760,6 +767,7 @@
 				18006BC61F5A4DFC00BA2CE5 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		18006BC71F5A4DFC00BA2CE5 /* Build configuration list for PBXNativeTarget "DouYuTVUITests" */ = {
 			isa = XCConfigurationList;
@@ -768,6 +776,7 @@
 				18006BC91F5A4DFC00BA2CE5 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};

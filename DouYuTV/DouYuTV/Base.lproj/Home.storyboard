@@ -11,7 +11,7 @@
         <!--Home View Controller-->
         <scene sceneID="EME-F3-heH">
             <objects>
-                <viewController id="x6C-fL-xyU" customClass="HomeViewController" sceneMemberID="viewController">
+                <viewController id="x6C-fL-xyU" customClass="HomeViewController" customModule="DouYuTV" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="EK3-GU-iuB"/>
                         <viewControllerLayoutGuide type="bottom" id="gJq-1h-eWY"/>
