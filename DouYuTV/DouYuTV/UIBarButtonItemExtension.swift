@@ -6,27 +6,42 @@
 //  Copyright © 2017年 Apple. All rights reserved.
 //
 
-import Foundation
 import UIKit
 
 extension UIBarButtonItem {
-    ////MARK: - 新增UIBarButtonItem便利构造函数
-    convenience init(normalImage:String,highlightedImage:String = "",size:CGSize = CGSize.zero) {
-        
+    /*
+     class func createItem(imageName : String, highImageName : String, size : CGSize) -> UIBarButtonItem {
+     let btn = UIButton()
+     
+     btn.setImage(UIImage(named: imageName), forState: .Normal)
+     btn.setImage(UIImage(named: highImageName), forState: .Highlighted)
+     
+     btn.frame = CGRect(origin: CGPointZero, size: size)
+     
+     return UIBarButtonItem(customView: btn)
+     }
+     */
+    
+    // 便利构造函数: 1> convenience开头 2> 在构造函数中必须明确调用一个设计的构造函数(self)
+    convenience init(imageName : String, highImageName : String = "", size : CGSize = CGSize.zero)  {
+        // 1.创建UIButton
         let btn = UIButton()
-        btn.setImage(UIImage(named:normalImage), for: .normal)
         
-        //MARK: - 判断是否需要设置highlightedImage
-        if highlightedImage != "" {
-            btn.setImage(UIImage(named:highlightedImage), for: .highlighted)
+        // 2.设置btn的图片
+        btn.setImage(UIImage(named: imageName), for: UIControlState())
+        if highImageName != "" {
+            btn.setImage(UIImage(named: highImageName), for: .highlighted)
         }
         
-        //MARK: - 判断是否需要设置size
+        // 3.设置btn的尺寸
         if size == CGSize.zero {
             btn.sizeToFit()
         } else {
             btn.frame = CGRect(origin: CGPoint.zero, size: size)
         }
-        self.init(customView: btn)
+        
+        // 4.创建UIBarButtonItem
+        self.init(customView : btn)
     }
+    
 }

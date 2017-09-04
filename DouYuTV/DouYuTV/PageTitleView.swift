@@ -2,159 +2,167 @@
 //  PageTitleView.swift
 //  DouYuTV
 //
-//  Created by Apple on 2017/9/2.
+//  Created by Apple on 2017/9/3.
 //  Copyright © 2017年 Apple. All rights reserved.
 //
 
-import Foundation
 import UIKit
 
+// 定义协议
 protocol PageTitleViewDelegate : class {
-    
-    func pageTitleView(titleView : PageTitleView,selectedIndex index : Int)
+    func pageTitleView(pageTitleView : PageTitleView, didSelectedIndex index : Int)
 }
 
-//MARK: - 滚动条的粗细
-private let scrollbarHeight:CGFloat = 3
+    private let scrollLineH:CGFloat = 3
+    private let titleMargin:CGFloat = 80
+
+    private let normalRGB : (CGFloat, CGFloat, CGFloat) = (85, 85, 85)
+    private let selectRGB : (CGFloat, CGFloat, CGFloat) = (255, 128, 0)
+    private let deltaRGB = (selectRGB.0 - normalRGB.0, selectRGB.1 - normalRGB.1, selectRGB.2 - normalRGB.2)
+    private let normalTitleColor = UIColor(red: 85/255.0, green: 85/255.0, blue: 85/255.0, alpha: 1.0)
+    private let selectTitleColor = UIColor(red: 255.0/255.0, green: 128/255.0, blue: 0/255.0, alpha: 1.0)
 
 class PageTitleView: UIView {
     
-    //MARK: - 定义属性
+    var isScrollEnable : Bool
+    var titles : [String]
+    lazy var titleLabels : [UILabel] = [UILabel]()
     var currentIndex : Int = 0
-    var titles:[String]
     weak var delegate : PageTitleViewDelegate?
     
-    //MARK: - 懒加载属性
-    lazy var scrollView : UIScrollView = {
+    // MARK:- 构造函数
+    init(frame: CGRect, isScrollEnable : Bool, titles : [String]) {
         
-        let scrollView = UIScrollView()
-        scrollView.showsHorizontalScrollIndicator = false
-        scrollView.scrollsToTop = false
-        scrollView.bounces = false
-        return scrollView
-    }()
-    
-    lazy var scrollbarLine : UIView = {
-        let scrollbarLine = UIView()
-        scrollbarLine.backgroundColor = UIColor.orange
-        return scrollbarLine
-    }()
-    
-    lazy var titleLabels : [UILabel] = [UILabel]()
-    
-    //MARK: - 自定义构造函数
-    init(frame: CGRect,titles:[String]) {
-        
+        self.isScrollEnable = isScrollEnable
         self.titles = titles
         super.init(frame: frame)
-        
-        loadPageTitleView()
-        
+        self.setupUI()
     }
     
     required init?(coder aDecoder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
-}
-
-//MARK: - 设置UI界面
-extension PageTitleView {
     
-    func loadPageTitleView() {
-        
-        //MARK: - 添加UIScrollView
+    private lazy var scrollView : UIScrollView = {
+        let scrollView = UIScrollView(frame: self.bounds)
+        scrollView.showsHorizontalScrollIndicator = false
+        scrollView.scrollsToTop = false
+        scrollView.bounces = false
+        return scrollView
+    }()
+    lazy var scrollLine : UIView = {
+        let scrollLine = UIView()
+        scrollLine.backgroundColor = selectTitleColor
+        return scrollLine
+    }()
+    private func setupUI() {
+        // 1.添加scrollView
         addSubview(scrollView)
-        scrollView.frame = bounds
-        
-        //MARK: - 添加Title对应的Label
-        loadTitleLabel()
-        
-        //MARK: - 添加滚动条滑块
-        loadScrollbar()
+        // 2.初始化labels
+        setupTitleLabels()
+        // 3.添加定义的线段和滑动的滑块
+        setupBottomlineAndScrollline()
     }
-    
-    //MARK: - 添加Title对应的Label方法
-    func loadTitleLabel()  {
-        for (index,title) in titles.enumerated() {
-            
-            //MARK: - label的frame固定值
-            let labelW:CGFloat = frame.width / CGFloat(titles.count)
-            let labelH:CGFloat = frame.height - scrollbarHeight
-            let labelY:CGFloat = 0
-            
-            //MARK: - 创建label
+    private func setupTitleLabels() {
+        let titleY : CGFloat = 0
+        let titleH : CGFloat = bounds.height - scrollLineH
+        let count = titles.count
+        for (index, title) in titles.enumerated() {
+            // 1.创建Label
             let label = UILabel()
-            
-            //MARK: - 设置label
+            // 2.设置Label的属性
             label.text = title
             label.tag = index
-            label.font = UIFont.systemFont(ofSize: 16.0)
-            label.textColor = UIColor.darkGray
             label.textAlignment = .center
-            
-            //MARK: - 设置label的frame
-            
-            let labelX:CGFloat = labelW * CGFloat(index)
-            label.frame = CGRect(x: labelX, y: labelY, width: labelW, height: labelH)
-            
-            //MARK: - 将label添加到scrollView中
-            scrollView.addSubview(label)
+            label.textColor = normalTitleColor
+            label.font = UIFont.systemFont(ofSize: 16.0)
             titleLabels.append(label)
-            
-            //MARK: - 添加label手势
+            // 3.设置label的frame
+            var titleW : CGFloat = 0
+            var titleX : CGFloat = 0
+            if !isScrollEnable {
+                titleW = bounds.width / CGFloat(count)
+                titleX = CGFloat(index) * titleW
+            } else {
+                
+                let maxSize: CGSize = CGSize(width: CGFloat(MAXFLOAT), height: 0)
+                let attributes : [String : Any] = [NSFontAttributeName : label.font]
+                let size = (title as NSString).boundingRect(with: maxSize, options: .usesLineFragmentOrigin, attributes: attributes, context: nil)
+                
+                titleW = size.width
+                if index != 0 {
+                    titleX = titleLabels[index - 1].frame.maxX + titleMargin
+                }
+            }
+            label.frame = CGRect(x: titleX, y: titleY, width: titleW, height: titleH)
+            // 4.将Label添加到父控件中
+            scrollView.addSubview(label)
+            // 5.监听label的点击
             label.isUserInteractionEnabled = true
-            let tapGes = UITapGestureRecognizer(target: self, action: #selector(self.clickTitleLabel(tapGes:)))
+            let tapGes = UITapGestureRecognizer(target: self, action: #selector(titleLabelClick))
             label.addGestureRecognizer(tapGes)
         }
     }
-    
-    //MARK: - 添加滚动条滑块方法
-    private func loadScrollbar()  {
-        //MARK: - 创建滚动条
-        let scrollbar = UIView()
-        scrollbar.backgroundColor = UIColor.lightGray
-        let barH:CGFloat = 0.1
-        scrollbar.frame = CGRect(x: 0, y: frame.height - barH, width: frame.width, height: barH)
-        addSubview(scrollbar)
-        
-        //MARK: - 获取titleLabels属性
-        guard let firstLabel = titleLabels.first else {return}
-        firstLabel.textColor = UIColor.orange
-        
-        //MARK: - 添加滚动条滑块
-        scrollView.addSubview(scrollbarLine)
-        scrollbarLine.frame = CGRect(x: firstLabel.frame.origin.x, y: frame.height - scrollbarHeight, width: firstLabel.frame.width, height: scrollbarHeight)
+    private func setupBottomlineAndScrollline() {
+        // 1.添加bottomline
+        let bottomline = UIView()
+        bottomline.frame = CGRect(x: 0, y: bounds.height - 0.5, width: bounds.width, height: 0.5)
+        bottomline.backgroundColor = UIColor.lightGray
+        addSubview(bottomline)
+        // 2.设置滑块的view
+        addSubview(scrollLine)
+        guard let firstLabel = titleLabels.first else { return }
+        let lineX = firstLabel.frame.origin.x
+        let lineY = bounds.height - scrollLineH
+        let lineW = firstLabel.frame.width
+        let lineH = scrollLineH
+        scrollLine.frame = CGRect(x: lineX, y: lineY, width: lineW, height: lineH)
+        firstLabel.textColor = selectTitleColor
     }
-
-}
-
-//MARK: - 监听label的点击
-extension PageTitleView {
     
-    @objc func clickTitleLabel(tapGes : UITapGestureRecognizer) {
-        
-        //MARK: - 获取当前label
-        guard let currentLabel = tapGes.view as? UILabel else { return }
-        
-        //MARK: - 获取之前label的Index
-        let formerlyLabel = titleLabels[currentIndex]
-        
-        //MARK: - 切换文字颜色
-        currentLabel.textColor = UIColor.orange
-        formerlyLabel.textColor = UIColor.darkGray
-        
-        //MARK: - 保存最新的label的Index
-        currentIndex = currentLabel.tag
-        
-        //MARK: - 滚动条滑块与label同步
-        let scrollbarLocation = CGFloat(currentLabel.tag) * scrollbarLine.frame.width
+    @objc private func titleLabelClick(tapGes : UITapGestureRecognizer) {
+        // 1.获取点击的下标志
+        guard let view = tapGes.view else { return }
+        let index = view.tag
+        // 2.滚到正确的位置
+        scrollToIndex(index: index)
+        // 3.通知代理
+        delegate?.pageTitleView(pageTitleView: self, didSelectedIndex: index)
+    }
+    
+    // 内容滚动
+    private func scrollToIndex(index : Int) {
+        // 1.获取最新的label和之前的label
+        let newLabel = titleLabels[index]
+        let oldLabel = titleLabels[currentIndex]
+        // 2.设置label的颜色
+        newLabel.textColor = selectTitleColor
+        oldLabel.textColor = normalTitleColor
+        // 3.scrollLine滚到正确的位置
+        let scrollLineEndX = scrollLine.frame.width * CGFloat(index)
         UIView.animate(withDuration: 0.3) {
-            self.scrollbarLine.frame.origin.x = scrollbarLocation
+            self.scrollLine.frame.origin.x = scrollLineEndX
         }
-        
-        //MARK: - 通知代理传递label的Index
-        delegate?.pageTitleView(titleView: self, selectedIndex: currentIndex)
-        
+        // 4.记录index
+        currentIndex = index
     }
 }
+
+// MARK:- 对外暴露方法
+extension PageTitleView {
+    func setCurrentTitle(sourceIndex : Int, targetIndex : Int, progress : CGFloat) {
+        
+        // 1.取出两个Label
+        let sourceLabel = titleLabels[sourceIndex]
+        let targetLabel = titleLabels[targetIndex]
+        // 2.移动scrollLine
+        let moveMargin = targetLabel.frame.origin.x - sourceLabel.frame.origin.x
+        scrollLine.frame.origin.x = sourceLabel.frame.origin.x + moveMargin * progress
+        
+        // 3.颜色渐变
+        sourceLabel.textColor = UIColor(red: (selectRGB.0 - deltaRGB.0 * progress) / 255.0, green: (selectRGB.1 - deltaRGB.1 * progress) / 255.0, blue: (selectRGB.2 - deltaRGB.2 * progress) / 255.0, alpha: 1.0)
+        targetLabel.textColor = UIColor(red: (normalRGB.0 + deltaRGB.0 * progress)/255.0, green: (normalRGB.1 + deltaRGB.1 * progress)/255.0, blue: (normalRGB.2 + deltaRGB.2 * progress)/255.0, alpha: 1.0)
+    }
+}
+
 
