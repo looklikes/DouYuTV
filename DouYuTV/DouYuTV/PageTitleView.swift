@@ -162,6 +162,8 @@ extension PageTitleView {
         // 3.颜色渐变
         sourceLabel.textColor = UIColor(red: (selectRGB.0 - deltaRGB.0 * progress) / 255.0, green: (selectRGB.1 - deltaRGB.1 * progress) / 255.0, blue: (selectRGB.2 - deltaRGB.2 * progress) / 255.0, alpha: 1.0)
         targetLabel.textColor = UIColor(red: (normalRGB.0 + deltaRGB.0 * progress)/255.0, green: (normalRGB.1 + deltaRGB.1 * progress)/255.0, blue: (normalRGB.2 + deltaRGB.2 * progress)/255.0, alpha: 1.0)
+//        // 4.记录最新的index
+//        currentIndex = targetIndex
     }
 }
 

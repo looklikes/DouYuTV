@@ -8,19 +8,11 @@
 
 import UIKit
 
-private let kTitleViewH : CGFloat = 40
-private let kStatusBarH : CGFloat = 20
-private let kTabbarH : CGFloat = 49
-private let kNavigationBarH : CGFloat = 44
-private let kScreenW : CGFloat = UIScreen.main.bounds.width
-private let kScreenH : CGFloat = UIScreen.main.bounds.height
-
 class HomeViewController: UIViewController {
-    
     
     // MARK:- 懒加载属性
     fileprivate lazy var pageTitleView : PageTitleView = {[weak self] in
-        let titleFrame = CGRect(x: 0, y: kStatusBarH + kNavigationBarH, width: kScreenW, height: kTitleViewH)
+        let titleFrame = CGRect(x: 0, y: statusBarH + navigationBarH, width: screenW, height: titleViewH)
         let titles = ["推荐", "手游", "娱乐", "游戏", "趣玩"]
         let titleView = PageTitleView(frame: titleFrame, isScrollEnable: false, titles: titles)
         titleView.delegate = self
@@ -30,12 +22,14 @@ class HomeViewController: UIViewController {
     fileprivate lazy var pageContentView : PageContentView = {[weak self] in
         
         // 1.确定内容的frame
-        let contentH = kScreenH - kStatusBarH - kNavigationBarH - kTitleViewH - kTabbarH
-        let contentFrame = CGRect(x: 0, y: kStatusBarH + kNavigationBarH + kTitleViewH, width: kScreenW, height: contentH)
+        let contentH = screenH - statusBarH - navigationBarH - titleViewH - tabbarH
+        let contentFrame = CGRect(x: 0, y: statusBarH + navigationBarH + titleViewH, width: screenW, height: contentH)
         
         //MARK: - 设置所有的子控制器
         var childVcs = [UIViewController]()
-        for _ in 0..<5 {
+        let recommendVC = RecommendViewController()
+        childVcs.append(recommendVC)
+        for _ in 0..<4 {
             let cvController = UIViewController()
             cvController.view.backgroundColor = UIColor.randomColor()
             childVcs.append(cvController)
@@ -82,9 +76,10 @@ extension HomeViewController {
         navigationItem.leftBarButtonItem = UIBarButtonItem(imageName: "homeLogoIcon")
         
         // 2.设置右侧的Item
-        let size = CGSize(width: 40, height: 40)
+        let size = CGSize(width: 40, height: 44)
+        let historyItem = UIBarButtonItem(imageName: "viewHistoryIcon", highImageName: "viewHistoryIconHL", size: size)
         let gameItem = UIBarButtonItem(imageName: "home_newGameicon", highImageName: "home_newGameicon_clicked", size: size)
-        navigationItem.rightBarButtonItems = [gameItem]
+        navigationItem.rightBarButtonItems = [historyItem,gameItem]
     }
 }
 

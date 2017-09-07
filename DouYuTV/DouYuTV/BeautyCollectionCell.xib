@@ -1,0 +1,91 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="12121" systemVersion="16G29" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="12089"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" id="gTV-IL-0wX" customClass="BeautyCollectionCell" customModule="DouYuTV" customModuleProvider="target">
+            <rect key="frame" x="0.0" y="0.0" width="171" height="179"/>
+            <autoresizingMask key="autoresizingMask"/>
+            <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
+                <rect key="frame" x="0.0" y="0.0" width="171" height="179"/>
+                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                <subviews>
+                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="cell_default_phone" translatesAutoresizingMaskIntoConstraints="NO" id="go1-Pc-r6w">
+                        <rect key="frame" x="0.0" y="0.0" width="171" height="143"/>
+                    </imageView>
+                    <stackView opaque="NO" contentMode="scaleToFill" spacing="5" translatesAutoresizingMaskIntoConstraints="NO" id="Npn-Yu-IFk">
+                        <rect key="frame" x="109.5" y="0.0" width="56.5" height="22"/>
+                        <subviews>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="UUO-Rt-NeA">
+                                <rect key="frame" x="0.0" y="0.0" width="10" height="22"/>
+                                <state key="normal" image="viewerIcon"/>
+                            </button>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="292.7万" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Siq-ZF-nUp">
+                                <rect key="frame" x="15" y="0.0" width="41.5" height="22"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="11"/>
+                                <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                        </subviews>
+                    </stackView>
+                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="yanzhiUserIcon" translatesAutoresizingMaskIntoConstraints="NO" id="agi-9J-fsd">
+                        <rect key="frame" x="0.0" y="153" width="12" height="12"/>
+                    </imageView>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="口水妹" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="JuO-xq-7mO">
+                        <rect key="frame" x="17" y="150" width="43" height="17"/>
+                        <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                        <nil key="textColor"/>
+                        <nil key="highlightedColor"/>
+                    </label>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="成都市" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="IYh-cU-EoY">
+                        <rect key="frame" x="128" y="148" width="43" height="21"/>
+                        <constraints>
+                            <constraint firstAttribute="height" constant="21" id="c8R-Tw-fbU"/>
+                        </constraints>
+                        <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                        <color key="textColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
+                        <nil key="highlightedColor"/>
+                    </label>
+                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="home_live_vertical_locate" translatesAutoresizingMaskIntoConstraints="NO" id="tfy-vt-M1z">
+                        <rect key="frame" x="111" y="153" width="12" height="12"/>
+                    </imageView>
+                </subviews>
+            </view>
+            <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+            <constraints>
+                <constraint firstItem="JuO-xq-7mO" firstAttribute="centerY" secondItem="IYh-cU-EoY" secondAttribute="centerY" id="296-oX-GVT"/>
+                <constraint firstItem="IYh-cU-EoY" firstAttribute="top" secondItem="go1-Pc-r6w" secondAttribute="bottom" constant="5" id="BKy-uH-l4A"/>
+                <constraint firstItem="agi-9J-fsd" firstAttribute="leading" secondItem="gTV-IL-0wX" secondAttribute="leading" id="CdZ-SY-C81"/>
+                <constraint firstAttribute="trailing" secondItem="Npn-Yu-IFk" secondAttribute="trailing" constant="5" id="CsP-qa-A3k"/>
+                <constraint firstAttribute="bottom" secondItem="IYh-cU-EoY" secondAttribute="bottom" constant="10" id="EWv-S8-LdD"/>
+                <constraint firstAttribute="trailing" secondItem="IYh-cU-EoY" secondAttribute="trailing" id="POe-XH-G4V"/>
+                <constraint firstItem="JuO-xq-7mO" firstAttribute="leading" secondItem="agi-9J-fsd" secondAttribute="trailing" constant="5" id="WwG-6f-iNB"/>
+                <constraint firstItem="tfy-vt-M1z" firstAttribute="centerY" secondItem="IYh-cU-EoY" secondAttribute="centerY" id="a8b-nb-KN9"/>
+                <constraint firstItem="go1-Pc-r6w" firstAttribute="top" secondItem="gTV-IL-0wX" secondAttribute="top" id="c0l-UK-0pI"/>
+                <constraint firstItem="agi-9J-fsd" firstAttribute="centerY" secondItem="IYh-cU-EoY" secondAttribute="centerY" id="fad-Me-p4l"/>
+                <constraint firstItem="go1-Pc-r6w" firstAttribute="leading" secondItem="gTV-IL-0wX" secondAttribute="leading" id="hNQ-FK-mcL"/>
+                <constraint firstAttribute="trailing" secondItem="go1-Pc-r6w" secondAttribute="trailing" id="hcC-pi-XG0"/>
+                <constraint firstItem="Npn-Yu-IFk" firstAttribute="top" secondItem="gTV-IL-0wX" secondAttribute="top" id="ofT-8W-Bhh"/>
+                <constraint firstItem="IYh-cU-EoY" firstAttribute="leading" secondItem="tfy-vt-M1z" secondAttribute="trailing" constant="5" id="wds-Jc-f8W"/>
+            </constraints>
+            <size key="customSize" width="168" height="179"/>
+            <connections>
+                <outlet property="beautyCollectionImage" destination="go1-Pc-r6w" id="XHF-2s-P1N"/>
+            </connections>
+            <point key="canvasLocation" x="-245.5" y="27.5"/>
+        </collectionViewCell>
+    </objects>
+    <resources>
+        <image name="cell_default_phone" width="103" height="103"/>
+        <image name="home_live_vertical_locate" width="12" height="12"/>
+        <image name="viewerIcon" width="10" height="8"/>
+        <image name="yanzhiUserIcon" width="12" height="12"/>
+    </resources>
+</document>

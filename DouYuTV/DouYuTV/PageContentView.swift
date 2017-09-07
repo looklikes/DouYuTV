@@ -113,6 +113,8 @@ extension PageContentView : UICollectionViewDelegate {
     
     func scrollViewDidScroll(_ scrollView: UIScrollView) {
         
+//        if isForbidScrollDelegate {return}
+        
         // 1.定义要获取的内容
         var sourceIndex = 0
         var targetIndex = 0
@@ -144,6 +146,7 @@ extension PageContentView : UICollectionViewDelegate {
         }
         
         // 3.将progress/sourceIndex/targetIndex传递给titleView
+        //print("progress:\(progress) sourceIndex:\(sourceIndex) targetIndex:\(targetIndex)")
         delegate?.pageContentView(self, progress: progress, sourceIndex: sourceIndex, targetIndex: targetIndex)
     }
 }

@@ -1,0 +1,87 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="12121" systemVersion="16G29" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="12089"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" id="gTV-IL-0wX" customClass="NormalCollectionCell" customModule="DouYuTV" customModuleProvider="target">
+            <rect key="frame" x="0.0" y="0.0" width="171" height="127"/>
+            <autoresizingMask key="autoresizingMask"/>
+            <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
+                <rect key="frame" x="0.0" y="0.0" width="171" height="127"/>
+                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                <subviews>
+                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalCompressionResistancePriority="749" image="Img_default" translatesAutoresizingMaskIntoConstraints="NO" id="Qei-dd-fJk">
+                        <rect key="frame" x="0.0" y="0.0" width="171" height="97"/>
+                    </imageView>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="TI6季军，带水友翱翔" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="OhS-0M-h2R">
+                        <rect key="frame" x="0.0" y="102.5" width="171" height="14.5"/>
+                        <fontDescription key="fontDescription" type="system" pointSize="12"/>
+                        <nil key="textColor"/>
+                        <nil key="highlightedColor"/>
+                    </label>
+                    <stackView opaque="NO" contentMode="scaleToFill" spacing="5" translatesAutoresizingMaskIntoConstraints="NO" id="aK9-Qd-EtI">
+                        <rect key="frame" x="5" y="70" width="51" height="22"/>
+                        <subviews>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="376-VA-m5D">
+                                <rect key="frame" x="0.0" y="0.0" width="12" height="22"/>
+                                <state key="normal" image="userNameIcon"/>
+                            </button>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="奶茶妹" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="J65-16-hzg">
+                                <rect key="frame" x="17" y="0.0" width="34" height="22"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="11"/>
+                                <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                        </subviews>
+                    </stackView>
+                    <stackView opaque="NO" contentMode="scaleToFill" spacing="5" translatesAutoresizingMaskIntoConstraints="NO" id="mJj-04-VI1">
+                        <rect key="frame" x="109.5" y="5" width="56.5" height="22"/>
+                        <subviews>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Nmb-d2-1HI">
+                                <rect key="frame" x="0.0" y="0.0" width="10" height="22"/>
+                                <state key="normal" image="viewerIcon"/>
+                            </button>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="292.7万" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="pGo-eW-Xpd">
+                                <rect key="frame" x="15" y="0.0" width="41.5" height="22"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="11"/>
+                                <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                        </subviews>
+                    </stackView>
+                </subviews>
+            </view>
+            <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+            <constraints>
+                <constraint firstAttribute="trailing" secondItem="OhS-0M-h2R" secondAttribute="trailing" id="No5-FV-mlT"/>
+                <constraint firstItem="OhS-0M-h2R" firstAttribute="leading" secondItem="gTV-IL-0wX" secondAttribute="leading" id="PYj-1M-eTg"/>
+                <constraint firstItem="mJj-04-VI1" firstAttribute="trailing" secondItem="Qei-dd-fJk" secondAttribute="trailing" constant="-5" id="Pps-4N-lGX"/>
+                <constraint firstItem="Qei-dd-fJk" firstAttribute="top" secondItem="gTV-IL-0wX" secondAttribute="top" id="Vf9-4P-xGv"/>
+                <constraint firstItem="OhS-0M-h2R" firstAttribute="top" secondItem="Qei-dd-fJk" secondAttribute="bottom" constant="5" id="WZ6-Dc-JEk"/>
+                <constraint firstItem="Qei-dd-fJk" firstAttribute="leading" secondItem="gTV-IL-0wX" secondAttribute="leading" id="aa4-Ah-MzL"/>
+                <constraint firstItem="aK9-Qd-EtI" firstAttribute="bottom" secondItem="Qei-dd-fJk" secondAttribute="bottom" constant="-5" id="hh9-Ex-82F"/>
+                <constraint firstAttribute="bottom" secondItem="OhS-0M-h2R" secondAttribute="bottom" constant="10" id="uPI-un-bLp"/>
+                <constraint firstItem="mJj-04-VI1" firstAttribute="top" secondItem="Qei-dd-fJk" secondAttribute="top" constant="5" id="ugU-dg-ntd"/>
+                <constraint firstItem="aK9-Qd-EtI" firstAttribute="leading" secondItem="Qei-dd-fJk" secondAttribute="leading" constant="5" id="v4M-Km-ygq"/>
+                <constraint firstAttribute="trailing" secondItem="Qei-dd-fJk" secondAttribute="trailing" id="zot-nN-tD7"/>
+            </constraints>
+            <size key="customSize" width="163" height="122"/>
+            <connections>
+                <outlet property="normalCollectionImage" destination="Qei-dd-fJk" id="QnV-kj-Tof"/>
+            </connections>
+            <point key="canvasLocation" x="52.5" y="81.5"/>
+        </collectionViewCell>
+    </objects>
+    <resources>
+        <image name="Img_default" width="172" height="103"/>
+        <image name="userNameIcon" width="12" height="12"/>
+        <image name="viewerIcon" width="10" height="8"/>
+    </resources>
+</document>
