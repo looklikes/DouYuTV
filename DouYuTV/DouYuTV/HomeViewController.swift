@@ -44,10 +44,10 @@ class HomeViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        // 设置UI界面
-        setupUI()
+        //MARK:- 设置UI界面
+        setupUI() 
+        
     }
-    
 }
 
 

@@ -20,8 +20,9 @@ private let headerViewID : String = "headerViewID"
 class RecommendViewController: UIViewController {
     
     // MARK:- 懒加载属性
+    private lazy var recommendViewModel : RecommendViewModel = RecommendViewModel()
+    
     private lazy var collectionView : UICollectionView = {[unowned self] in
-        
         
         // 1.创建布局
         let layout = UICollectionViewFlowLayout()
@@ -51,8 +52,11 @@ class RecommendViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        
+        //MARK: - 设置UI
         self.view.addSubview(collectionView)
+        
+        //MARK: - 发送网络请求
+        recommendViewModel.requestData()
         
     }
 
@@ -62,8 +66,7 @@ class RecommendViewController: UIViewController {
     }
     
 }
-
-// MARK:- 遵守UICollectionView的数据源协议
+// MARK: - 遵守UICollectionView的数据源协议
 extension RecommendViewController : UICollectionViewDataSource,UICollectionViewDelegate,UICollectionViewDelegateFlowLayout {
     
     func numberOfSections(in collectionView: UICollectionView) -> Int {

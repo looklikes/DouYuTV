@@ -10,7 +10,7 @@
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
         <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
-        <collectionReusableView opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" id="U6b-Vx-4bR">
+        <collectionReusableView opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" id="U6b-Vx-4bR" customClass="CollectionHeaderView" customModule="DouYuTV" customModuleProvider="target">
             <rect key="frame" x="0.0" y="0.0" width="320" height="50"/>
             <autoresizingMask key="autoresizingMask"/>
             <subviews>
@@ -55,6 +55,10 @@
                 <constraint firstItem="emc-hM-iUU" firstAttribute="leading" secondItem="U6b-Vx-4bR" secondAttribute="leading" constant="10" id="qat-fF-kNx"/>
                 <constraint firstAttribute="bottom" secondItem="emc-hM-iUU" secondAttribute="bottom" constant="11" id="yOA-iL-q0e"/>
             </constraints>
+            <connections>
+                <outlet property="iconImage" destination="emc-hM-iUU" id="Z4f-Ud-3t8"/>
+                <outlet property="titleView" destination="12Q-tm-HaM" id="iKa-Jv-T0m"/>
+            </connections>
         </collectionReusableView>
     </objects>
     <resources>
